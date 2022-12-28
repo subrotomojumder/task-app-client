@@ -1,7 +1,9 @@
 import React from 'react';
+import { useContext } from 'react';
 import { toast } from 'react-toastify';
-
+import { AuthContext } from '../../context/AuthProvider';
 const AddTasks = () => {
+    const { user } = useContext(AuthContext)
     const handleSubmit = event => {
         event.preventDefault();
         const image = event.target.image.files[0];
@@ -17,28 +19,29 @@ const AddTasks = () => {
                     taskTitle: event.target.taskTitle.value,
                     taskDescription: event.target.taskDescription.value,
                     companyName: event.target.companyName.value,
-                    image: results.data.display_url
+                    image: results?.data?.display_url,
+                    userEmail: user?.email,
                 }
                 fetch(`${process.env.REACT_APP_server_url}/tasks`, {
-                    method: "PUT",
+                    method: "POST",
                     headers: {
                         'content-type': 'application/json'
                     },
                     body: JSON.stringify(task)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data?.acknowledged) {
-                        toast.success("added your task information")
-                        event.reset();
-                    }
-                })
-                .catch(err => console.error(err.message));
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data?.acknowledged) {
+                            toast.success("added your task information")
+                            event.target.reset();
+                        }
+                    })
+                    .catch(err => console.error(err.message));
             });
     }
     return (
-        <div className='border p-10'>
-            <form onSubmit={handleSubmit}>
+        <div className='w-full md:w-3/5 lg:w-3/4 mx-auto mt-20 '>
+            <form onSubmit={handleSubmit} className='border p-10'>
                 <h2 className='text-3xl font-thin mb-6'>Add your tasks</h2>
                 <div className="relative z-0 mb-6 w-full group">
                     <input type="text" name="taskTitle" id="task-title" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />

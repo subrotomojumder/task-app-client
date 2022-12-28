@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FaGooglePlusG } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 
@@ -9,14 +9,16 @@ const SignIn = () => {
     const [error, setError] = useState('');
     const { userLogin, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/add-tasks';
 
     const handleSubmit = e => {
         e.preventDefault();
         setError('');
         userLogin(inputInfo.email, inputInfo.password)
             .then(res => {
-                navigate('/');
                 toast.success('sign-in your account!')
+                navigate(from, {replace: true});
             })
             .catch(err => {
                 setError(err.message)
@@ -28,13 +30,14 @@ const SignIn = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(results => {
-                toast.success('sign-in your account!')
+                toast.success('sign-in your account!');
+                navigate(from, {replace: true});
             })
             .then(err => setError(err.message))
     }
 
     return (
-        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 bg-base-100">
+        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 mt-20 bg-base-100">
             <form onSubmit={handleSubmit} >
                 <h1 className='text-4xl font-semibold text-center'>Login</h1>
                 <div className="mb-6">

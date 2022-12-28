@@ -18,9 +18,9 @@ const ErrorPage = () => {
             <div>
                 <img className='w-[40%] mx-auto mb-3' src="https://uxwing.com/wp-content/themes/uxwing/download/signs-and-symbols/error-icon.png" alt="" />
                 <h4 className='text-2xl mb-2'>Something went wrong !!!</h4>
-                <h2 className='text-4xl text-warning'>{error.status}</h2>
+                <h2 className='text-4xl text-green-400'>{error.status}</h2>
                 <h3 className='text-4xl my-4'>{error.statusText || error.message}</h3>
-                <p>Please <button onClick={handleLogOut} className='btn btn-ghost btn-sm'>Sign out</button> and log back in !!</p>
+                <p>Please <button onClick={handleLogOut} className=' bg-slate-400 rounded py-1 px-2 text-sm'>Sign out</button> and log back in !!</p>
             </div>
         </div>
     );

@@ -17,8 +17,8 @@ const Register = () => {
             .then(res => {
                 updateUser(inputInfo.name)
                     .then(results => {
-                        navigate('/');
                         toast.success('create your account!')
+                        navigate('/add-tasks');
                     })
                     .catch(err => setError(err.message));
             })
@@ -33,12 +33,13 @@ const Register = () => {
         googleLogin()
             .then(results => {
                 toast.success('create your account!')
+                navigate('/add-tasks');
             })
             .then(err => setError(err.message))
     }
 
     return (
-        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 bg-base-100">
+        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 mt-20 bg-base-100">
             <form onSubmit={handleSubmit} >
                 <h1 className='text-4xl font-semibold text-center'>Register</h1>
                 <div className="mb-6">
