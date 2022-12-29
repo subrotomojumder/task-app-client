@@ -54,15 +54,15 @@ const AddTasks = () => {
         setImgUpBtnText(image.name)
     }
     return (
-        <div className='w-full md:w-3/5 lg:w-3/4 mx-auto mt-20 '>
+        <div className='w-full md:w-3/5 lg:w-3/4 mx-auto pt-20 '>
             <form onSubmit={handleSubmit} className='border p-10'>
-                <h2 className='text-3xl font-thin mb-6'>Add your tasks</h2>
+                <h2 className='text-3xl font-thin mb-6 dark:text-white'>Add your tasks</h2>
                 <div className="relative z-0 mb-6 w-full group">
-                    <input type="text" name="taskTitle" id="task-title" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <input type="text" name="taskTitle" id="task-title" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-300 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                     <label htmlFor="task-title" className="peer-focus:font-medium absolute text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tasks title</label>
                 </div>
                 <div className="relative z-0 mb-6 w-full group">
-                    <input type="text" name="taskDescription" id="task-description" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <input type="text" name="taskDescription" id="task-description" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-300 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                     <label htmlFor="task-description" className="peer-focus:font-medium absolute text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tasks description</label>
                 </div>
                 <div className="grid md:grid-cols-2 md:gap-6">
@@ -71,7 +71,7 @@ const AddTasks = () => {
                         <label htmlFor="task-image" className="absolute top-0 border rounded text-lg py-[6px] text-center w-full block bg-slate-300">{imgUpBtnText}</label>
                     </div>
                     <div className="relative z-0 mb-6 w-full group">
-                        <input type="text" name="companyName" id="company-name" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <input type="text" name="companyName" id="company-name" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-300 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label htmlFor="company-name" className="peer-focus:font-medium absolute text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company name</label>
                     </div>
                 </div>

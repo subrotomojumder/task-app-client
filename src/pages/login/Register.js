@@ -47,9 +47,9 @@ const Register = () => {
     }
 
     return (
-        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 mt-20 bg-base-100">
+        <div className="card w-2/3 lg:w-1/2 mx-auto pt-20 bg-base-100 dark:text-white">
             <form onSubmit={handleSubmit} >
-                <h1 className='text-3xl md:text-4xl font-semibold text-center mb-3 text-gray-600'>Create new account</h1>
+                <h1 className='text-3xl md:text-4xl font-semibold text-center mb-3 text-gray-600 dark:text-white'>Create new account</h1>
                 <div className="mb-6">
                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
                     <input

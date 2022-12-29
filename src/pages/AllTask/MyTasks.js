@@ -43,7 +43,7 @@ const MyTasks = () => {
     };
     return (
         <div className=''>
-            <div className="overflow-x-auto mt-20 relative shadow-md sm:rounded-lg">
+            <div className="overflow-x-auto pt-20 relative shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr><th scope="col" className="py-3 pl-12">

@@ -10,13 +10,27 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-
+    const [darkTheme, setDarkTheme] = useState(false);
+    useEffect(() => {
+        if (darkTheme) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, [darkTheme])
+    useEffect(() => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setDarkTheme(true)
+        } else {
+            setDarkTheme(false)
+        }
+    }, [])
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
     const updateUser = (name) => {
-        return updateProfile(auth.currentUser, { displayName: name})
+        return updateProfile(auth.currentUser, { displayName: name })
     };
     const userLogin = (email, password) => {
         setLoading(true);
@@ -44,7 +58,9 @@ const AuthProvider = ({ children }) => {
         updateUser,
         userLogin,
         googleLogin,
-        logOut
+        logOut,
+        setDarkTheme,
+        darkTheme
     };
     return <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
 };

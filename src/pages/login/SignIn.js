@@ -42,9 +42,9 @@ const SignIn = () => {
     }
 
     return (
-        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 mt-20 bg-base-100">
+        <div className="card w-2/3 lg:w-1/2 mx-auto my-6 pt-20 bg-base-100 dark:text-white">
             <form onSubmit={handleSubmit} >
-                <h1 className='text-3xl md:text-4xl font-semibold text-gray-700 text-center mb-5'>Login your account</h1>
+                <h1 className='text-3xl md:text-4xl font-semibold text-gray-700 dark:text-white text-center mb-5'>Login your account</h1>
                 <div className="mb-6">
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                     <input

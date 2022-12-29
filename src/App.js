@@ -7,12 +7,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { router } from './routes/Route';
 
 const queryClient = new QueryClient();
-
 function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <div className='max-w-[1000px] min-h-[88vh] mx-auto px-4' style={{ background: `linear-gradient(to top, rgba(255, 99, 71, 0.1), rgba(0, 0, 0, 0))`, backgroundSize: 'cover' }}>
+        <div className='dark:bg-gray-500 min-h-[100vh]'>
           <RouterProvider router={router} />
           <ToastContainer position="top-center" />
         </div>
