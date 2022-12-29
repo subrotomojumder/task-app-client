@@ -5,7 +5,7 @@ import note from '../assets/home-background.png'
 const GetStarted = () => {
     return (
         <div className='min-h-[97vh] text-center' >
-            <img src={note} className="mx-auto mt-5 h-[65vh]" alt="" />
+            <img src={note} className="mx-auto mt-3 md:mt-6 lg:mt-10 h-[60vh]" alt="" />
             <h4 className='text-3xl font-thin'>Welcome to Tasks</h4>
             <p className='font-thin mb-6 mt-1'>Create your To-do list here. Task app makes managing your time very easy.</p>
             <Link to='/add-tasks'>

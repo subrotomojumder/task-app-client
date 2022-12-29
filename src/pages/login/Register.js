@@ -3,26 +3,34 @@ import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
+import Spinner from '../../components/Spinner';
 
 const Register = () => {
     const [inputInfo, setInputInfo] = useState({});
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSubmit = e => {
         e.preventDefault();
         setError('');
+        setIsLoading(true);
         createUser(inputInfo.email, inputInfo.password)
             .then(res => {
                 updateUser(inputInfo.name)
                     .then(results => {
                         toast.success('create your account!')
-                        navigate('/add-tasks');
+                        navigate('/');
+                        setIsLoading(false)
                     })
-                    .catch(err => setError(err.message));
+                    .catch(err => {
+                        setIsLoading(false)
+                        setError(err.message)
+                    });
             })
             .catch(err => {
+                setIsLoading(false)
                 setError(err.message)
             })
     }
@@ -33,7 +41,7 @@ const Register = () => {
         googleLogin()
             .then(results => {
                 toast.success('create your account!')
-                navigate('/add-tasks');
+                navigate('/');
             })
             .then(err => setError(err.message))
     }
@@ -41,7 +49,7 @@ const Register = () => {
     return (
         <div className="card w-2/3 lg:w-1/2 mx-auto my-6 mt-20 bg-base-100">
             <form onSubmit={handleSubmit} >
-                <h1 className='text-4xl font-semibold text-center'>Register</h1>
+                <h1 className='text-3xl md:text-4xl font-semibold text-center mb-3 text-gray-600'>Create new account</h1>
                 <div className="mb-6">
                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
                     <input
@@ -83,7 +91,7 @@ const Register = () => {
                     </label>
                 </div>
                 <div className='text-center'>
-                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-28">{isLoading ? <Spinner h="h-5" w="w-5" color="fill-yellow-500"/> :'register'}</button>
                 </div>
                 <div className='text-center mt-4'>
                     <p onClick={handleGoogleLogin}><FaGooglePlusG className='text-4xl hover:text-blue-800 mx-auto mb-[-8px]' /> </p>

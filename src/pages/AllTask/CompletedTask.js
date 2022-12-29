@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import CompleteTaskRow from '../../components/CompleteTaskRow';
 import DeleteModal from '../../components/DeleteModal';
 import { AuthContext } from '../../context/AuthProvider';
@@ -9,25 +10,25 @@ const CompletedTask = () => {
     const { user } = useContext(AuthContext);
     const [deletedId, setDeletedId] = useState('');
     const navigate = useNavigate();
-    const { data: completeTasks = [], refetch} = useQuery({
+    const { data: completeTasks = [], refetch } = useQuery({
         queryKey: ['completeTasks', user?.email],
         queryFn: () => fetch(`${process.env.REACT_APP_server_url}/tasks/${user?.email}?completed=complete`).then(res => res.json())
     })
-    const handleTaskIncomplete = (id) => {
+    const handleUpdateCompleteTask = (id, updateDoc) => {
         fetch(`${process.env.REACT_APP_server_url}/tasks/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ completed: false })
+            body: JSON.stringify(updateDoc)
         })
             .then(res => res.json())
             .then(data => {
                 if (data?.modifiedCount) {
+                    updateDoc?.comment && toast.success('added your comment')
                     refetch()
-                    navigate('/completed-tasks')
                 }
-            })
+            }).catch(e => toast.error(e.message))
     }
     if (!completeTasks.length) {
         return <div className='text-center h-[100vh] flex justify-center items-center'>
@@ -58,14 +59,19 @@ const CompletedTask = () => {
                                     Finished
                                 </div>
                             </th>
-                            <th scope="col" className="py-3 px-6">
+                            <th scope="col" className="py-3 pl-6">
                                 <span className="">comments</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            completeTasks?.map(task => <CompleteTaskRow task={task} handleTaskIncomplete={handleTaskIncomplete} setDeletedId={setDeletedId} key={task?._id} />)
+                            completeTasks?.map(task => <CompleteTaskRow
+                                task={task}
+                                key={task?._id}
+                                handleUpdateCompleteTask={handleUpdateCompleteTask}
+                                setDeletedId={setDeletedId}
+                            />)
                         }
                     </tbody>
                 </table>

@@ -47,7 +47,11 @@ const Navbar = () => {
                                 <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
                             </button>
                         </div>
-                        : <button className="py-2 px-3 text-xs ml-auto mr-1 lg:mr-6 font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">Login</button>
+                        : <div className='ml-auto'>
+                            <Link to='/register'>
+                                <button className="py-2 px-3 text-xs mr-1 lg:mr-6 font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-500 dark:bg-blue-600 dark:hover:bg-blue-700">Register</button>
+                            </Link>
+                        </div>
                     }
                     <div className='absolute top-14 right-2'>
                         {

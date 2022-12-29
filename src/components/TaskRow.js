@@ -31,7 +31,7 @@ const TaskRow = ({ task, handleTaskCompleted, setEditTask, setDeletedId }) => {
                 </div>
             </td>
             <td className="py-4 px-10">
-                <button onClick={() => setEditTask(task)} className="font-medium bg-teal-500 py-1 px-3 rounded-md text-white hover:bg-blue-500 dark:text-blue-500">Edit</button>
+                <button onClick={() => setEditTask(task)} className="font-medium bg-teal-500 py-1 px-3 rounded-md text-white hover:bg-blue-500 dark:text-white">Edit</button>
             </td>
         </tr>
     );
