@@ -1,13 +1,17 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import pen from '../../assets/nav-pen.png';
 import { AuthContext } from '../../context/AuthProvider';
+import { setTheme } from '../../redux/state/theme/themeSlice';
 
 const Navbar = () => {
-    const { user, setDarkTheme, darkTheme } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [showMenu, setShowMenu] = useState(false);
+    const darkTheme = useSelector((state)=> state.darkTheme.value)
+    const themeDispatch = useDispatch();
     const navLinkStyle = (active) => {
         if (active) {
             const style = "block py-2 pl-3 pr-4 rounded bg-gray-200 text-blue-700 text-[14.5px]";
@@ -37,7 +41,7 @@ const Navbar = () => {
                     <Link to='/'>
                         <div className="flex items-center">
                             <img src={pen} className="h-6 mr-3 sm:h-9" alt="Logo" />
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Tasks App</span>
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Task Manager</span>
                         </div>
                     </Link>
                     {user?.uid ?
@@ -63,7 +67,7 @@ const Navbar = () => {
                     </div>
                     <div className={`absolute ${user?.uid ? "right-11" : "right-20 lg:right-24"} mt-1`}>
                         <label className="inline-flex relative items-center cursor-pointer ml-auto">
-                            <input onClick={()=>setDarkTheme(!darkTheme)} type="checkbox" value="" class="sr-only peer" />
+                            <input onClick={()=>themeDispatch(setTheme())} type="checkbox" value="" class="sr-only peer" />
                             <div className="w-11 h-6 bg-gray-600 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                             <span className="ml-1 text-sm font-medium text-gray-900 dark:text-white">{darkTheme ?'Light':'Dark'}</span>
                         </label>

@@ -55,7 +55,7 @@ const AddTasks = () => {
     }
     return (
         <div className='w-full md:w-3/5 lg:w-3/4 mx-auto pt-20 '>
-            <form onSubmit={handleSubmit} className='border p-10'>
+            <form onSubmit={handleSubmit} className='border dark:bg-gray-600 dark:shadow-xl p-10'>
                 <h2 className='text-3xl font-thin mb-6 dark:text-white'>Add your tasks</h2>
                 <div className="relative z-0 mb-6 w-full group">
                     <input type="text" name="taskTitle" id="task-title" className="block pt-3 pb-0 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-300 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />

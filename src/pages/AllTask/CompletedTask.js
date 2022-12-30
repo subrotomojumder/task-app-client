@@ -33,7 +33,7 @@ const CompletedTask = () => {
     if (!completeTasks.length) {
         return <div className='text-center h-[100vh] flex justify-center items-center'>
             <div>
-                <p className='text-center text-2xl'>Empty tasks!!</p>
+                <p className='text-center text-2xl dark:text-yellow-50'>Empty tasks!!</p>
                 <Link to='/add-tasks'><button className='mt-4 bg-yellow-200 py-1 px-2 rounded-lg text-sm font-semibold text-white hover:bg-blue-500'>Add task</button></Link>
             </div>
         </div>
